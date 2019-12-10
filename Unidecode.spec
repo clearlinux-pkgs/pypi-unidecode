@@ -4,7 +4,7 @@
 #
 Name     : Unidecode
 Version  : 1.1.1
-Release  : 6
+Release  : 7
 URL      : https://files.pythonhosted.org/packages/b1/d6/7e2a98e98c43cf11406de6097e2656d31559f788e9210326ce6544bd7d40/Unidecode-1.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b1/d6/7e2a98e98c43cf11406de6097e2656d31559f788e9210326ce6544bd7d40/Unidecode-1.1.1.tar.gz
 Summary  : ASCII transliterations of Unicode text
@@ -17,8 +17,19 @@ Requires: Unidecode-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
-Unidecode, lossy ASCII transliterations of Unicode text
 =======================================================
+        
+        It often happens that you have text data in Unicode, but you need to
+        represent it in ASCII. For example when integrating with legacy code that
+        doesn't support Unicode, or for ease of entry of non-Roman names on a US
+        keyboard, or when constructing ASCII machine identifiers from
+        human-readable Unicode strings that should still be somewhat intelligible
+        (a popular example of this is when making an URL slug from an article
+        title).
+        
+        In most of these examples you could represent Unicode characters as ``???`` or
+        ``\\15BA\\15A0\\1610``, to mention two extreme cases. But that's nearly useless
+        to someone who actually wants to read what the text says.
 
 %package bin
 Summary: bin components for the Unidecode package.
@@ -58,13 +69,14 @@ python3 components for the Unidecode package.
 
 %prep
 %setup -q -n Unidecode-1.1.1
+cd %{_builddir}/Unidecode-1.1.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1561130234
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1576017327
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -80,12 +92,12 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/Unidecode
-cp LICENSE %{buildroot}/usr/share/package-licenses/Unidecode/LICENSE
+cp %{_builddir}/Unidecode-1.1.1/LICENSE %{buildroot}/usr/share/package-licenses/Unidecode/4cc77b90af91e615a64ae04893fdffa7939db84c
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -100,7 +112,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/Unidecode/LICENSE
+/usr/share/package-licenses/Unidecode/4cc77b90af91e615a64ae04893fdffa7939db84c
 
 %files python
 %defattr(-,root,root,-)
