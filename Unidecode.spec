@@ -4,7 +4,7 @@
 #
 Name     : Unidecode
 Version  : 1.2.0
-Release  : 18
+Release  : 19
 URL      : https://files.pythonhosted.org/packages/cd/31/245d8a384939aa0ee152c76fc62890f79f35fc41cd12839f5df268d9081d/Unidecode-1.2.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/cd/31/245d8a384939aa0ee152c76fc62890f79f35fc41cd12839f5df268d9081d/Unidecode-1.2.0.tar.gz
 Summary  : ASCII transliterations of Unicode text
