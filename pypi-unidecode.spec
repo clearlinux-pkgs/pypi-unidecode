@@ -4,7 +4,7 @@
 #
 Name     : pypi-unidecode
 Version  : 1.3.4
-Release  : 38
+Release  : 39
 URL      : https://files.pythonhosted.org/packages/41/16/ee78864c2c2ba9bddba3978baa378f83270c8b7810eb7900f84e62a9ffac/Unidecode-1.3.4.tar.gz
 Source0  : https://files.pythonhosted.org/packages/41/16/ee78864c2c2ba9bddba3978baa378f83270c8b7810eb7900f84e62a9ffac/Unidecode-1.3.4.tar.gz
 Summary  : ASCII transliterations of Unicode text
