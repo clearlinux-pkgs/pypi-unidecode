@@ -1,5 +1,5 @@
 PKG_NAME := pypi-unidecode
-URL = https://files.pythonhosted.org/packages/41/16/ee78864c2c2ba9bddba3978baa378f83270c8b7810eb7900f84e62a9ffac/Unidecode-1.3.4.tar.gz
+URL = https://files.pythonhosted.org/packages/c1/b4/6c2f0e3198ebab1d0cc692490d993404f18b0d20bd6640def4f713cb542d/Unidecode-1.3.5.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
